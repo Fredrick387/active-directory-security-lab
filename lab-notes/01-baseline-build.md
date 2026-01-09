@@ -4,67 +4,56 @@
 
 The purpose of this phase was to build a functional Active Directory environment exactly as described in the source walkthrough, without introducing hardening, auditing, or security controls.
 
-This baseline serves as a control state for later security-focused observations.
-
 ---
 
 ## Lab Scope and Constraints
 
 - Single Domain Controller
 - Single Windows client
-- DNS and DHCP enabled
+- Default Active Directory configuration
 - Bulk user creation via PowerShell
-- Default configuration settings only
-
-Out of scope for this phase:
-- Hardening
-- Advanced auditing
-- Detection tooling
-- Exploitation testing
 
 ---
 
 ## Environment Overview
 
-| Component        | Description                     |
-|------------------|---------------------------------|
-| Domain Controller| Windows Server (AD DS, DNS)     |
-| Client           | Windows workstation (Domain-joined) |
-| Identity         | Domain users created via script |
+| Component | Description |
+|---------|-------------|
+| Domain Controller | Windows Server (AD DS, DNS) |
+| Client | Domain-joined Windows workstation |
+| Identity | Domain users created via script |
 
 ---
 
 ## Build Summary
 
-The environment was built following the walkthrough with no deviations.
-
-Key outcomes:
-- Domain services were functional
-- Client successfully joined the domain
-- Domain users were able to authenticate
-- No security configuration was modified
+The baseline environment was built successfully with no deviations from the walkthrough.
 
 ---
 
 ## Security Observations (Baseline)
 
-At this stage, no security controls were added.
+At this stage:
+- Authentication worked with minimal friction
+- Authorization was largely implicit
+- No additional logging or auditing was enabled
 
-Initial observations:
-- Authentication works with minimal friction
-- Authorization is largely implicit
-- Logging and visibility were not addressed during setup
+These observations were intentionally preserved for later comparison.
 
-These observations were intentionally left unexplored until later phases.
+---
+
+## Evidence
+
+The following screenshots confirm the baseline state of the environment.
+
+![Domain Controller Installed](../evidence/screenshots/baseline/dc-installed.png)
+
+![Client Joined to Domain](../evidence/screenshots/baseline/client-domain-join.png)
+
+![Domain Users Created](../evidence/screenshots/baseline/domain-users-created.png)
 
 ---
 
 ## Why This Baseline Matters
 
-Establishing an untouched baseline is critical for understanding:
-
-- What Active Directory considers “normal”
-- What risk exists before misconfiguration or abuse
-- What defenders can and cannot observe by default
-
-This baseline will be used for comparison in later security extensions.
+This untouched baseline establishes a control state for understanding how security-relevant behavior changes when configuration or permissions are modified in later phases.
